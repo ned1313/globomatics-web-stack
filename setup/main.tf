@@ -32,3 +32,12 @@ resource "azurerm_storage_container" "sc" {
   container_access_type = "private"
 }
 
+data "azurerm_client_config" "current" {}
+
+resource "azurerm_role_assignment" "blob_contributor" {
+  scope                = azurerm_storage_account.sa.id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = data.azurerm_client_config.current.object_id
+  
+}
+
