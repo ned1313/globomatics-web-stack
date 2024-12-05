@@ -6,7 +6,7 @@ generate_hcl "backend.tf" {
       key                  = "${terramate.stack.id}.${terramate.stack.name}.tfstate"
       resource_group_name  = global.terraform.backend.resource_group_name
       storage_account_name = global.terraform.backend.storage_account_name
-      storage_use_azuread  = true
+      use_azuread_auth     = true
     }
     }
   }
