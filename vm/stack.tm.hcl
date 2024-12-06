@@ -31,6 +31,7 @@ generate_hcl "network_remote_data_source.tf" {
         storage_account_name = global.terraform.backend.storage_account_name
         container_name       = global.terraform.backend.container_name
         key                  = "${global.terraform.stack.values.network_stack.id}.${global.terraform.stack.values.network_stack.name}.terraform.tfstate"
+        use_azuread_auth     = true
       }
     }
   }
