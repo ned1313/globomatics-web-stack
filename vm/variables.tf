@@ -29,8 +29,3 @@ variable "vm_zone" {
   type        = string
   default     = "1"
 }
-
-variable "vm_subnet_id" {
-  description = "Subnet ID for the VM"
-  type        = string
-}
