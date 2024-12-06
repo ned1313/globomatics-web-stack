@@ -19,3 +19,9 @@ generate_hcl "terraform.tfvars" {
     }
   }
 }
+
+output "vm_subnet_id" {
+  backend   = "terraform"
+  value     = azurerm_subnet.main["subnet1"].id
+  sensitive = false
+}
