@@ -26,5 +26,5 @@ input "vm_subnet_id" {
   backend       = "terraform"
   value         = outputs.vm_subnet_id.value
   mock          = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
-  from_stack_id = global.terraform.stack.values.network_stack.id
+  from_stack_id = "9c4f6727-f7ee-445c-812a-1c252b16c84b"
 }
