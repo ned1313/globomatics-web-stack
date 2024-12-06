@@ -2,12 +2,6 @@ locals {
   name = "${var.prefix}-net-${var.suffix}"
 }
 
-provider "azurerm" {
-  features {}
-  storage_use_azuread = true
-
-}
-
 resource "azurerm_resource_group" "main" {
   name     = local.name
   location = var.location

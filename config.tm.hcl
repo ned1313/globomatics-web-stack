@@ -4,8 +4,14 @@ globals "terraform" "backend" {
   container_name       = "tfstate"
 }
 
+globals "terraform" "providers" "azurerm" {
+  source = "hashicorp/azurerm"
+  version = "~> 3.0"
+  features = {}
+}
+
 terramate {
   config {
-    experiments = ["scripts"]
+    experiments = ["scripts","outputs-sharing"]
   }
 }
