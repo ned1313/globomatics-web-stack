@@ -23,9 +23,3 @@ globals "terraform" "stack" "values" {
     id   = "9c4f6727-f7ee-445c-812a-1c252b16c84b"
   }
 }
-
-terramate {
-  config {
-    experiments = ["scripts", "outputs-sharing"]
-  }
-}
