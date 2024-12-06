@@ -32,7 +32,7 @@ module "testvm" {
       ip_configurations = {
         ip_configuration_1 = {
           name                          = "${local.name}-ipconfig1"
-          private_ip_subnet_resource_id = data.terraform_remote_state.network.outputs.subnets["subnet1"].id
+          private_ip_subnet_resource_id = data.terraform_remote_state.network.outputs.subnet_map["subnet1"].id
         }
       }
     }
