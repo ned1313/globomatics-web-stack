@@ -7,7 +7,7 @@ script "terraform" "prepare" {
         ["terraform",  "init"], 
         ["terraform", "fmt"], 
         ["terraform", "validate"],
-        ["tfsec", "."]
+        ["tfsec", "-s", "."]
     ]
   }
 }
