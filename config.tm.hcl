@@ -3,3 +3,9 @@ globals "terraform" "backend" {
   storage_account_name = "terramate397ml9"
   container_name       = "tfstate"
 }
+
+terramate {
+  config {
+    experiments = ["scripts"]
+  }
+}
