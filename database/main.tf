@@ -7,16 +7,21 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
-module "sql_server" {
-  source  = "Azure/avm-res-dbformysql-flexibleserver/azurerm"
-  version = "0.1.0"
+resource "azurerm_postgresql_server" "postgres" {
+  name                = "${var.prefix}-postgres-server"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
 
-  name                   = local.name
-  location               = azurerm_resource_group.main.location
-  resource_group_name    = azurerm_resource_group.main.name
-  administrator_login    = "mradministrator"
-  administrator_password = "P@ssw0rd12345!"
-  sku_name               = "GP_Standard_D2ds_v4"
+  sku_name = "GP_Gen5_2"
+
+  storage_mb            = 5120
+  backup_retention_days = 7
+
+
+  administrator_login          = "psqladmin"
+  administrator_login_password = "H@Sh1CoR3!"
+  version                      = "9.5"
+  ssl_enforcement_enabled      = true
 
   tags = var.tags
 }
