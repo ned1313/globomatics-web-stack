@@ -10,7 +10,6 @@ stack {
   ]
 
   after = [
-    "tag:compute",
     "tag:network",
   ]
 }

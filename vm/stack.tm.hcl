@@ -22,9 +22,17 @@ generate_hcl "terraform.tfvars" {
   }
 }
 
-input "vm_subnet_id" {
-  backend       = "terraform"
-  value         = outputs.vm_subnet_id.value
-  mock          = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
-  from_stack_id = "9c4f6727-f7ee-445c-812a-1c252b16c84b"
+generate_hcl "network_remote_data_source.tf" {
+  content {
+    data "terraform_remote_state" "network" {
+      backend = "azurerm"
+      config = {
+        resource_group_name  = global.terraform.backend.resource_group_name
+        storage_account_name = global.terraform.backend.storage_account_name
+        container_name       = global.terraform.backend.container_name
+        key                  = "${global.terraform.stack.values.network_stack.id}.${global.terraform.stack.values.network_stack.name}.terraform.tfstate"
+        use_azuread_auth     = true
+      }
+    }
+  }
 }
