@@ -10,10 +10,10 @@ generate_hcl "backend.tf" {
   content {
     terraform {
       backend "azurerm" {
-        container_name       = globals.azurerm_backend.container_name
+        container_name       = global.azurerm_backend.container_name
         key                  = "${terramate.stack.id}.${terramate.stack.name}.tfstate"
-        resource_group_name  = globals.azurerm_backend.resource_group_name
-        storage_account_name = globals.azurerm_backend.storage_account_name
+        resource_group_name  = global.azurerm_backend.resource_group_name
+        storage_account_name = global.azurerm_backend.storage_account_name
         use_azuread_auth     = true
       }
     }

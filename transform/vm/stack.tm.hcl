@@ -2,6 +2,16 @@ stack {
   name        = "vm"
   description = "vm"
   id          = "db5805f2-7429-4cad-bf99-d611872c6c5b"
+
+  tags = [
+    "vm",
+    "azure",
+    "azurerm-backend",
+  ]
+
+  after = [
+    "tag:network",
+  ]
 }
 
 
@@ -14,8 +24,8 @@ globals {
 
 generate_hcl "stack.auto.tfvars" {
   content {
-    vm_sku_size = globals.stack_input_variables.vm_sku_size
-    vm_zone     = globals.stack_input_variables.vm_zone
+    vm_sku_size = global.stack_input_variables.vm_sku_size
+    vm_zone     = global.stack_input_variables.vm_zone
   }
 }
 

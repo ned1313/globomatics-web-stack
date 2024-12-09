@@ -2,6 +2,12 @@ stack {
   name        = "network"
   description = "network"
   id          = "d6013905-12dc-4d71-9e7d-5ca4766928a2"
+
+  tags = [
+    "network",
+    "azure",
+    "azurerm-backend",
+  ]
 }
 
 globals {
@@ -16,8 +22,8 @@ globals {
 
 generate_hcl "stack.auto.tfvars" {
   content {
-    cidr_range = globals.stack_input_variables.cidr_range
-    subnets    = globals.stack_input_variables.subnets
+    cidr_range = global.stack_input_variables.cidr_range
+    subnets    = global.stack_input_variables.subnets
   }
 }
 

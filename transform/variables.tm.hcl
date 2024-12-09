@@ -12,9 +12,9 @@ globals {
 
 generate_hcl "global.auto.tfvars" {
   content {
-    prefix   = globals.input_variables.prefix
-    suffix   = globals.input_variables.suffix
-    location = globals.input_variables.location
-    tags     = globals.input_variables.tags
+    prefix   = global.input_variables.prefix
+    suffix   = global.input_variables.suffix
+    location = global.input_variables.location
+    tags     = global.input_variables.tags
   }
 }

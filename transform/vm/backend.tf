@@ -2,10 +2,10 @@
 
 terraform {
   backend "azurerm" {
-    container_name       = globals.azurerm_backend.container_name
+    container_name       = "tfstate"
     key                  = "db5805f2-7429-4cad-bf99-d611872c6c5b.vm.tfstate"
-    resource_group_name  = globals.azurerm_backend.resource_group_name
-    storage_account_name = globals.azurerm_backend.storage_account_name
+    resource_group_name  = "rg-397ml9"
+    storage_account_name = "terramate397ml9"
     use_azuread_auth     = true
   }
 }
