@@ -21,7 +21,7 @@ generate_hcl "versions.tf" {
 generate_hcl "providers.tf" {
   content {
     provider "azurerm" {
-      features = {}
+      features {}
     }
   }
 }
