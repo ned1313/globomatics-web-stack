@@ -10,8 +10,8 @@ generate_hcl "versions.tf" {
     terraform {
       required_providers {
         azurerm = {
-          source  = "${globals.azurerm.source}"
-          version = "${globals.azurerm.version}"
+          source  = global.azurerm.source
+          version = global.azurerm.version
         }
       }
     }
