@@ -1,6 +1,7 @@
 provider "azurerm" {
   features {}
   storage_use_azuread = true
+  subscription_id = var.azurerm_subscription_id
 }
 
 resource "random_string" "suffix" {
@@ -44,7 +45,7 @@ resource "azurerm_role_assignment" "self_contributor" {
 resource "azurerm_role_assignment" "oidc_contributor" {
   scope                = azurerm_storage_account.sa.id
   role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = module.github_oidc.azuread_application.object_id
+  principal_id         = module.github_oidc.service_principal.object_id
 
 }
 
@@ -61,11 +62,11 @@ module "github_oidc" {
 
 resource "github_actions_secret" "oidc" {
   for_each = {
-    azure_client_id       = module.github_oidc.azuread_application.application_id
-    azure_tenant_id       = module.github_oidc.azuread_application.tenant_id
-    azure_subscription_id = data.azurerm_client_config.current.subscription_id
+    azure_client_id       = module.github_oidc.azuread_application.client_id
+    azure_tenant_id       = module.github_oidc.service_principal.application_tenant_id
+    azure_subscription_id = var.azurerm_subscription_id
   }
   secret_name     = each.key
   plaintext_value = each.value
-  repository      = var.repository_name
+  repository      = split("/",var.repository_name)[1]
 }
