@@ -31,6 +31,6 @@ generate_hcl "stack.auto.tfvars" {
 input "vm_subnet_id" {
   backend       = "terraform"
   value         = outputs.vm_subnet_id.value
-  from_stack_id = "f4d4fd68-9833-4b7a-9a10-112e6b9728c3"
+  from_stack_id = "f4d4fd68-9833-4b7a-9a10-112e6b972888"
   mock          = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/example-resource-group/providers/Microsoft.Network/virtualNetworks/virtualNetworksValue/subnets/subnetValue"
 }
