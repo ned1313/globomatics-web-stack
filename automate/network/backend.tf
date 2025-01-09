@@ -3,7 +3,7 @@
 terraform {
   backend "azurerm" {
     container_name       = "tfstate"
-    key                  = "f4d4fd68-9833-4b7a-9a10-112e6b9728c3.network.tfstate"
+    key                  = "f4d4fd68-9833-4b7a-9a10-112e6b972888.network.tfstate"
     resource_group_name  = "rg-gp6tsw"
     storage_account_name = "terramategp6tsw"
     use_azuread_auth     = true
