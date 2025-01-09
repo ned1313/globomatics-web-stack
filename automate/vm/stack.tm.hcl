@@ -16,7 +16,7 @@ stack {
 
 globals {
   stack_values = {
-    vm_sku_size = "Standard_B2s"
+    vm_sku_size = "Standard_B4s"
     vm_zone     = "1"
   }
 }
