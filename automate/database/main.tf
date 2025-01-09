@@ -7,8 +7,13 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
+resource "random_integer" "postgres" {
+  min = 1000
+  max = 9999
+}
+
 resource "azurerm_postgresql_server" "postgres" {
-  name                = "${var.prefix}-postgres-server"
+  name                = "${var.prefix}-postgres-${random_integer.postgres.result}"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
