@@ -1,0 +1,23 @@
+name: Terraform Deployment
+
+# Trigger the workflow on push events to the main branch in the working directory
+on:
+  push:
+    branches:
+      - main
+    paths:
+        - automate/**
+
+jobs:
+    deploy:
+        name: Deploy Terraform changes in changed Terramate Stacks
+
+        permissions:
+            id-token: write
+            contents: read
+            pull-requests: read
+            checks: read
+
+        runs-on: ubuntu-latest
+
+        ### Use working directory set with 
